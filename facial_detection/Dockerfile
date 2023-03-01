@@ -1,6 +1,6 @@
 FROM arm32v7/python:3.9-buster
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update -y && apt-get install -y --no-install-recommends \
     libatlas-base-dev \
     libjasper-dev \
     libqtgui4 \
