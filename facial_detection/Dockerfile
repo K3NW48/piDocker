@@ -4,6 +4,6 @@ RUN apt-get update && apt-get install -y libsm6 libxrender1 libfontconfig1 libat
 
 RUN pip3 install opencv-python-headless playsound
 
-COPY myscript.py .
+COPY main.py .
 
-CMD [ "python3", "myscript.py" ]
+CMD [ "python3", "main.py" ]
