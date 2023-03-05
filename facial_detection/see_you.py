@@ -6,8 +6,11 @@ face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_fronta
 cap = cv2.VideoCapture(0)
 
 while True:
-    ret, img = cap.read()
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
 
@@ -15,9 +18,8 @@ while True:
         print("Face detected!")
         playsound("i_see_you_sound.mp3")
 
-    cv2.imshow('img', img)
-    k = cv2.waitKey(30) & 0xff
-    if k == 27:
+    cv2.imshow('frame', frame)
+    if cv2.waitKey(1) == ord('q'):
         break
 
 cap.release()
